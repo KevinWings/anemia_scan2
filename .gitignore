@@ -1,0 +1,5 @@
+anemiaEnv\
+__pycache__/
+*._pyc
+.env\
+text.txt\
