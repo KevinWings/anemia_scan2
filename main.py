@@ -1,5 +1,6 @@
 import diagnostics
 import sys
+from termcolor import colored
 
 def main():
     print("Anemia Scan and Diagnostic Tool")
@@ -12,10 +13,12 @@ def main():
         #logic handling
         result_text, status_color = diagnostics.assess_patient(sex_input, hb_input)
 
+        print("\n" + colored(result_text, status_color, attrs=["bold"]))
+
         #Output
         print(f"RESULT: {result_text}")
     except ValueError as e:
-        print(f"Error: {e}")
+        print(colored(f"Error: {e}"))
     except KeyboardInterrupt:
         print("Exiting program.")
         sys.exit()
