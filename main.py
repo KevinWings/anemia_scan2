@@ -1,6 +1,13 @@
 import diagnostics
 import sys
 from termcolor import colored
+import datetime
+
+def save_report(result):
+    with open("patient_history.txt", "a") as f:
+        timestamp = datetime.datetime.now().strftime("%Y-%m%d %H:%M")
+        f.write(f"[{timestamp}]{result}\n")
+        print("Report saved successfully")
 
 def main():
     print("Anemia Scan and Diagnostic Tool")
@@ -14,6 +21,8 @@ def main():
         result_text, status_color = diagnostics.assess_patient(sex_input, hb_input)
 
         print("\n" + colored(result_text, status_color, attrs=["bold"]))
+
+        save_report(result_text)
 
         #Output
         print(f"RESULT: {result_text}")
